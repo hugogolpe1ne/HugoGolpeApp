@@ -13,7 +13,6 @@ const App = () => {
     return (
         <BrowserRouter>
             <Header/>
-            <main>
                  <Routes>
                      <Route path="/" element={<ItemListContainer/>}/>
                      <Route path="/detail/:id" element={<ItemDetailContainer/>}/>
@@ -21,7 +20,6 @@ const App = () => {
                      <Route path="/carrito" element={<Carrito/>}/>
                      <Route path="/checkout" element={<Checkout/>}/>
                 </Routes>
-            </main>
             <Nav/>
             <Footer/>
         </BrowserRouter>

@@ -9,20 +9,18 @@ const ItemCount = ({Stock,Initial=[0],onAdd=()=>{}}) => {
         }
     }
     const disminuirContador = () => {
-        if (contador >1){
+        if (contador > 0){
             setContador(contador - 1)
         }
     }
 
     const confirmarContador = () => {
         onAdd(contador)
-        if (onAdd) {
-        }
     }
     
 
     return (
-        <div onClick={(e)=>{console.log(e.currentTarget)}}>
+        <div>
             <p>cantidad : {contador} Unidades : {Stock}</p>
             <button onClick={aumentarContador}>aumentar</button>
             <button onClick={disminuirContador}>disminuir</button>
