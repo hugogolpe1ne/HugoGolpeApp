@@ -1,10 +1,14 @@
-const cartWidget = (props) => {
+import React , {useContext} from "react";
+import { NavLink } from "react-router-dom";
+import { contexto } from "./CartContext";
 
-    return(
-            <span className="material-symbols-outlined">
-                shopping_cart_checkout
-            </span>
+const CartWidget = () => {
+
+    const resultado = useContext(contexto)
+
+    return (
+        <NavLink to ="/carrito">carrito {resultado.cantidad_total}</NavLink> 
     )
 }
 
-export default cartWidget
+export default CartWidget

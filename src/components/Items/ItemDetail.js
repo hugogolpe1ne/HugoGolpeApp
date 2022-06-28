@@ -13,7 +13,7 @@ const ItemDetail = ({id, name, price, imagen, stock, description}) => {
     
     const onAdd = (cantidadSeleccionada) => {
         setCant(cantidadSeleccionada)
-        if (cantidadSeleccionada >1)
+        if (cantidadSeleccionada >0)
             setCant(true)
     }
 

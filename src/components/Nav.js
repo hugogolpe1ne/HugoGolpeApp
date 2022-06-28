@@ -1,4 +1,5 @@
 import { Link , NavLink} from "react-router-dom" 
+import CartWidget from "./CartWidget"
 
 const Nav = ({NavInFooter,NavInHeader}) => {
     if (NavInHeader) {
@@ -10,8 +11,8 @@ const Nav = ({NavInFooter,NavInHeader}) => {
                 <nav >
                         <NavLink to ={NavInHeader = "/categoria/celulares"}>{NavInHeader = "celulares"}</NavLink>
                         <NavLink to ={NavInHeader = "/categoria/fotografia"}>{NavInHeader = "fotografia"}</NavLink>
-                        <NavLink to ={NavInHeader = "/categoria/computadoras"}>{NavInHeader = "computadoras"}</NavLink>
-                        <NavLink to ="/carrito">carrito</NavLink>  
+                        <NavLink to ={NavInHeader = "/categoria/computadoras"}>{NavInHeader = "computadoras"}</NavLink> 
+                        <CartWidget/>
                 </nav>
             </div>
         )
