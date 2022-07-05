@@ -8,8 +8,6 @@ import { contador } from "./ItemCount"
 const ItemDetail = ({id, name, price, imagen, stock, description}) => {
 
     const [cant, setCant] = useState(false)
-
-    console.log(cant)
     
     const onAdd = (cantidadSeleccionada) => {
         setCant(cantidadSeleccionada)
@@ -23,7 +21,7 @@ const ItemDetail = ({id, name, price, imagen, stock, description}) => {
             <img className="detail-image" src={imagen} alt={id}/>
             <h2>{description}</h2>
             <h2><b>${price}</b></h2>
-            {cant ? <Link to="/carrito">Terminar Compra</Link> : <ItemCount Stock={stock} Initial={0} onAdd={onAdd}/>}
+            {cant ? <Link to="/carrito">Al carrito</Link> : <ItemCount Stock={stock} Initial={0} onAdd={onAdd}/>}
         </div>
     )
 }

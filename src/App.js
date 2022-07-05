@@ -8,6 +8,7 @@ import ItemDetailContainer from "./components/Items/ItemDetailContainer";
 import Cart from "./components/Cart";
 import { MiProvider } from "./components/CartContext";
 
+
 const App = () => {
 
     return (
