@@ -2,7 +2,6 @@ import React  from "react";
 import { useState } from "react";
 import ItemCount from "./ItemCount"
 import { Link } from "react-router-dom";
-import { contador } from "./ItemCount"
 
 
 const ItemDetail = ({id, name, price, imagen, stock, description}) => {

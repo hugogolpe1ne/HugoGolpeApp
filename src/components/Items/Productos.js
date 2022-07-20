@@ -1,6 +1,5 @@
 export const productos =[
    {
-       id: 1,
        name: "Camara",
        category:"fotografia",
        price: 80000, 
@@ -9,7 +8,6 @@ export const productos =[
        stock: 6,
     },
    {
-    id: 2,
     name: "Celular",
     category: "celulares",
     price: 65000,
@@ -18,7 +16,6 @@ export const productos =[
     stock: 3,
     },
     {
-    id: 3,
     name: "notebook",
     category: "computadoras",
     price: 120000,
@@ -28,11 +25,3 @@ export const productos =[
     }
 
 ]
-
-export const getItemById = (id) => {
-    return new Promise ((resolve) => {
-        setTimeout(()=> {
-            resolve(productos.find(prod => prod.id ===id));
-        }, 1000)
-    })
-}
