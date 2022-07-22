@@ -6,21 +6,21 @@ import { collectionProductos } from "./Firebase";
 
 const ItemDetailContainer = () => {
 
-    const [producto,setProduct] = useState({});
-    const {id} = useParams()
+    const [item, setItem] = useState({});
+    const { id } = useParams()
 
     useEffect(() => {
-        const ref = doc(collectionProductos,id);
-        getDoc(ref).then((response) => {
-                setProduct({
-                    id: response.id,
-                    ...response.data(),
-                })
-        })
-    }, [id]);
-    console.log(producto)
+        const ref = doc(collectionProductos, id);
+        const consulta = getDoc(ref)
 
-    return  <ItemDetail producto={producto}/>
+        consulta
+            .then(resultado => {
+                const producto = resultado.data()
+                setItem(producto)
+            })
+        }, [])
+
+    return  <ItemDetail item={item}/>
 }
 
 export default ItemDetailContainer

@@ -4,7 +4,7 @@ import ItemCount from "./ItemCount"
 import { Link } from "react-router-dom";
 
 
-const ItemDetail = ({id, name, price, imagen, stock, description}) => {
+const ItemDetail = ({item}) => {
 
     const [cant, setCant] = useState(false)
     
@@ -16,11 +16,11 @@ const ItemDetail = ({id, name, price, imagen, stock, description}) => {
 
     return (
         <div>
-            <h1>{name}</h1>
-            <img className="detail-image" src={imagen} alt={id}/>
-            <h2>{description}</h2>
-            <h2><b>${price}</b></h2>
-            {cant ? <Link to="/carrito">Al carrito</Link> : <ItemCount Stock={stock} Initial={0} onAdd={onAdd}/>}
+            <h1>{item.name}</h1>
+            <img className="detail-image" src={item.imagen} alt={item.id}/>
+            <h2>{item.description}</h2>
+            <h2><b>${item.price}</b></h2>
+            {cant ? <Link to="/carrito">Al carrito</Link> : <ItemCount Stock={item.stock} Initial={0} onAdd={onAdd}/>}
         </div>
     )
 }
