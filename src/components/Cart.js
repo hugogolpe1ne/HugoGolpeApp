@@ -1,12 +1,12 @@
 import { serverTimestamp } from "firebase/firestore"
 import React, { useContext, useState } from "react"
 import Form from "./Items/Form"
-//import CartContext from "./CartContext"
+import { cartContext } from "./CartContext";
 
 const Cart = () =>{
     const [data, setData] =useState({name: "", email: "",phone: ""})
 
-    const {carrito, borrarItem, precioTotal, borrarTodo}= useContext()
+    const {carrito, borrarItem, precioTotal, borrarTodo}= useContext(cartContext)
 
     const handleChange = (e) => {
         const {name, value} = e.target
