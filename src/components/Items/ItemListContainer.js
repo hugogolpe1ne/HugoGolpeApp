@@ -15,12 +15,12 @@ const ItemListContainer = () => {
             : collectionProductos;
             
             getDocs(consulta).then((resultado)=>{
-                    const productos_mapeados = resultado.docs.map(referencia => {
+                    const productosMapeados = resultado.docs.map(referencia => {
                         const aux = referencia.data()
                         aux.id = referencia.id
                         return aux
                     })
-                    setItems(productos_mapeados)
+                    setItems(productosMapeados)
                 })
                 .catch((error)=>{
                     console.log(error)
