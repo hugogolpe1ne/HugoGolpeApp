@@ -47,9 +47,6 @@ const Form = ({ handleChange, userData, handleSubmit, logged }) => {
               name="email"
             ></input>
           </div>
-          <button>
-            Realizar compra
-          </button>
       </form>
     </div>
   );

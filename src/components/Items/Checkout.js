@@ -1,3 +1,48 @@
+/*import { db } from "./Firebase"
+import { collection , addDoc , serverTimestamp } from "firebase/firestore"
+import { useState } from "react"
+
+
+const Checkout = () => {
+
+  const [idCompra,setIdCompra] = useState("")
+
+  const handleBuy = () => {
+    
+    const collectionOrdenes = collection(db,"ordenes")
+
+    const orderData = {
+      buyer : {
+        name : "",
+        phone : "",
+        email : ""
+      },
+      items : [{id:1,titulo:""}],
+      date : serverTimestamp(),
+      total : []
+    }
+
+    const consulta = addDoc(collectionOrdenes,orderData)
+
+    consulta
+      .then(resultado=>{
+        setIdCompra(resultado.id)
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+  }
+
+  return (
+    <>
+    <div>Checkout</div>
+    {idCompra&&<p>Su compra es : {idCompra}</p>}
+    <button onClick={handleBuy}>guardar</button>
+    </>
+  )
+}
+export default Checkout*/
+
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from "./Firebase"
@@ -15,7 +60,6 @@ export const Checkout = () => {
     email: '',
     confirmEmail: '',
   });
-  const [orderId, setOrderId] = useState('');
 
   let cartCheckout = [];
   resultContext.carrito.forEach((element) => {
@@ -40,28 +84,31 @@ export const Checkout = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    const orderData = {
-      buyer: {
-        name: userData.name,
-        lastName: userData.lastName,
-        phone: userData.phone,
-        email: userData.email,
-      },
-      items: cartCheckout,
-      total: resultContext.totalPrice,
-      date: serverTimestamp(),
-    };
+  const handleBuy = () => {
 
-    const collectionOrders = collection(db, 'orders');
-    addDoc(collectionOrders, orderData)
-      .then((response) => {
-        setOrderId(response.id);
-        resultContext.clear();
+    const collectionOrdenes = collection(db,"ordenes")
+    const orderData = {
+      buyer : {
+        name : userData.name,
+        lastname : userData.lastName,
+        phone : userData.phone,
+        email : userData.email
+      },
+      items : cartCheckout,
+      date : serverTimestamp(),
+      total :resultContext.totalPrice,
+    }
+
+    const consulta = addDoc(collectionOrdenes,orderData)
+
+    consulta
+      .then(resultado=>{
+        setUserData(resultado.id)
       })
-      .catch((error) => {;
-      });
-  };
+      .catch(error=>{
+        console.log(error)
+      })
+  }
 
   return (
     <div>
@@ -71,22 +118,26 @@ export const Checkout = () => {
               <h2>Resumen de compra</h2>
               <div>
                 <p>Items: {resultContext.cantidadTotal}</p>
-                <p>Envio: ¡Gratis!</p>
                 <p>Total: ${resultContext.precioTotal}</p>
               </div>
               <Link to="/carrito">
                 <span>Volver al carrito</span>
               </Link>
+              <Link to="/">
+                <span>Volver a la tienda</span>
+              </Link>
             </div>
             <div>
+              <h3>Informacion del Usuario</h3>
               <Form
                 handleChange={handleChange}
                 userData={userData}
-                handleSubmit={handleSubmit}
               />
+              <button onClick={handleBuy}>guardar</button>
             </div>
           </div>
         </div>
   )
 }
+
 export default Checkout
