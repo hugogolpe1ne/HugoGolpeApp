@@ -74,14 +74,11 @@ export const Checkout = () => {
                 <p>Envio: ¡Gratis!</p>
                 <p>Total: ${resultContext.precioTotal}</p>
               </div>
-              <Link to="/cart">
+              <Link to="/carrito">
                 <span>Volver al carrito</span>
               </Link>
             </div>
             <div>
-              <h2>
-                Detalles de facturación
-              </h2>
               <Form
                 handleChange={handleChange}
                 userData={userData}
