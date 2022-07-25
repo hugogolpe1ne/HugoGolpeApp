@@ -18,9 +18,10 @@ const ItemDetailContainer = () => {
                 const producto = resultado.data()
                 setItem(producto)
             })
-        }, [])
+        }, [id])
+        console.log(item)
 
-    return  <ItemDetail item={item}/>
+    return  <ItemDetail {...item}/>
 }
 
 export default ItemDetailContainer

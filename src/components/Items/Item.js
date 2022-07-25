@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 
 
-function Item ({id, name, price, imagen, category}) {
+function item ({id, name, price, imagen, category}) {
     
     return (
         <div key={id}>
@@ -15,4 +15,4 @@ function Item ({id, name, price, imagen, category}) {
     )
 }
 
-export default Item
+export default item
