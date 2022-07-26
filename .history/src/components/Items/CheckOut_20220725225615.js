@@ -13,8 +13,18 @@ export const Checkout = () => {
     lastName: '',
     phone: '',
     email: '',
+    confirmEmail: '',
   });
-  const [orderId, setOrderId] = useState('')
+
+  let cartCheckout = [];
+  resultContext.carrito.forEach((element) => {
+    cartCheckout.push({
+      id: element.id,
+      title: element.title,
+      price: element.price,
+      quantity: element.quantity,
+    });
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +32,11 @@ export const Checkout = () => {
 
     const target = e.target;
     const label = target.parentElement.children[0];
+    if (value === '') {
+      label.classList.remove();
+    } else if (value !== '') {
+      label.classList.add();
+    }
   };
 
   const handleBuy = () => {
@@ -34,16 +49,16 @@ export const Checkout = () => {
         phone : userData.phone,
         email : userData.email
       },
-      items : resultContext.precioTotal,
+      items : cartCheckout,
       date : serverTimestamp(),
       total :resultContext.precioTotal,
     }
 
     const consulta = addDoc(collectionOrdenes,orderData)
-
     consulta
       .then(resultado=>{
-        setOrderId(resultado.id)
+        setUserData(resultado.id)
+        resultContext.clear()
       })
       .catch(error=>{
         console.log(error)
@@ -73,8 +88,7 @@ export const Checkout = () => {
                 handleChange={handleChange}
                 userData={userData}
               />
-              <button onClick={handleBuy}>Terminar compra</button>
-              <p>Codigo de Orden de Compra :{orderId}</p>
+              <button onClick={handleBuy}>terminar compra</button>
             </div>
           </div>
         </div>

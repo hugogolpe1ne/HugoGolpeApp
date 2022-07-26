@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 export const Checkout = () => {
   const resultContext = useContext(cartContext);
   const [userData, setUserData] = useState({
-    name: '',
-    lastName: '',
-    phone: '',
-    email: '',
+    name: userData.name,
+    lastName: userData.lastName,
+    phone: userData.phone,
+    email: userData.email,
   });
-  const [orderId, setOrderId] = useState('')
+  console.log(userData)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +43,7 @@ export const Checkout = () => {
 
     consulta
       .then(resultado=>{
-        setOrderId(resultado.id)
+        setUserData(resultado.id)
       })
       .catch(error=>{
         console.log(error)
@@ -74,7 +74,7 @@ export const Checkout = () => {
                 userData={userData}
               />
               <button onClick={handleBuy}>Terminar compra</button>
-              <p>Codigo de Orden de Compra :{orderId}</p>
+
             </div>
           </div>
         </div>

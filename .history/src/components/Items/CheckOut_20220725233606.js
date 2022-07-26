@@ -14,7 +14,6 @@ export const Checkout = () => {
     phone: '',
     email: '',
   });
-  const [orderId, setOrderId] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +42,7 @@ export const Checkout = () => {
 
     consulta
       .then(resultado=>{
-        setOrderId(resultado.id)
+        setUserData(resultado.id)
       })
       .catch(error=>{
         console.log(error)
@@ -74,7 +73,7 @@ export const Checkout = () => {
                 userData={userData}
               />
               <button onClick={handleBuy}>Terminar compra</button>
-              <p>Codigo de Orden de Compra :{orderId}</p>
+
             </div>
           </div>
         </div>

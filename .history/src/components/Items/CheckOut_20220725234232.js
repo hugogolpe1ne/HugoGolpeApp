@@ -74,7 +74,7 @@ export const Checkout = () => {
                 userData={userData}
               />
               <button onClick={handleBuy}>Terminar compra</button>
-              <p>Codigo de Orden de Compra :{orderId}</p>
+              {userData ? <p>{orderId}</p> : <button onClick={handleBuy}>Terminar compra</button>}
             </div>
           </div>
         </div>
